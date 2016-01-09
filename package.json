@@ -1,0 +1,44 @@
+{
+  "name": "jugendsommer",
+  "version": "2.0.0-beta.0",
+  "description": "registration application",
+  "main": "server/app.js",
+  "scripts": {
+    "precompile:dev": "cp ./client/src/*.html ./client/dist & cp ./client/src/*.ico ./client/dist",
+    "compile:dev": "node_modules/.bin/webpack",
+    "compile:prod": "node_modules/.bin/webpack -p",
+    "test": "node_modules/.bin/mocha --opts mocha.opts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/appztreme/Jugendsommer.git"
+  },
+  "keywords": [
+    "registration",
+    "node",
+    "react",
+    "mongo"
+  ],
+  "author": "florian.edelmaier@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/appztreme/Jugendsommer/issues"
+  },
+  "homepage": "https://github.com/appztreme/Jugendsommer#readme",
+  "dependencies": {
+    "history": "1.17.0",
+    "react": "0.14.6",
+    "react-dom": "0.14.6",
+    "react-router": "1.0.3"
+  },
+  "devDependencies": {
+    "babel-core": "6.4.0",
+    "babel-loader": "6.2.1",
+    "babel-preset-es2015": "6.3.13",
+    "babel-preset-react": "6.3.13",
+    "expect": "1.13.4",
+    "mocha": "2.3.4",
+    "react-addons-test-utils": "0.14.6",
+    "webpack": "1.12.10"
+  }
+}
