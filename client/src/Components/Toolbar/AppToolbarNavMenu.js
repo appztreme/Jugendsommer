@@ -6,10 +6,12 @@ import MenuItem from 'material-ui/lib/menus/menu-item';
 import MenuIcon from 'material-ui/lib/svg-icons/navigation/menu';
 import EventIcon from 'material-ui/lib/svg-icons/notification/event-note';
 import SunIcon from 'material-ui/lib/svg-icons/image/wb-sunny';
+import BookIcon from 'material-ui/lib/svg-icons/action/assignment-turned-in';
 
 const menuStructure = [
     { key: 'about', label: 'About', route: '/about', icon: SunIcon },
-    { key: 'event', label: 'Events', route: '/events', icon: EventIcon }
+    { key: 'event', label: 'Events', route: '/events', icon: EventIcon },
+    { key: 'myReservations', label: 'Meine Reservierungen', route: '/myReservations', icon: BookIcon }
 ];
 
 const AppToolbarNavMenu = () => (

@@ -7,7 +7,9 @@
     "precompile:dev": "cp ./client/src/*.html ./client/dist & cp ./client/src/*.ico ./client/dist",
     "compile:dev": "node_modules/.bin/webpack",
     "compile:prod": "node_modules/.bin/webpack -p",
-    "test": "node_modules/.bin/mocha --opts mocha.opts"
+    "test": "node_modules/.bin/mocha --opts mocha.opts",
+    "prestart": "npm run compile:dev",
+    "start": "node server/server.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +28,9 @@
   },
   "homepage": "https://github.com/appztreme/Jugendsommer#readme",
   "dependencies": {
+    "body-parser": "1.15.0",
+    "compression": "1.6.1",
+    "express": "4.13.4",
     "history": "1.17.0",
     "material-ui": "0.14.2",
     "react": "0.14.6",

@@ -7,6 +7,7 @@ const NavigationMenu = ({isOpen}) => (
     <LeftNav open={isOpen}>
         <MenuItem><Link to='/about'>About</Link></MenuItem>
         <MenuItem><Link to='/events'>Events</Link></MenuItem>
+        <MenuItem><Link to='/myReservations'>Mein Reservierungen</Link></MenuItem>
     </LeftNav>
 );
 

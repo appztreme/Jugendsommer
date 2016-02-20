@@ -19679,11 +19679,11 @@
 
 	var _App2 = _interopRequireDefault(_App);
 
-	var _About = __webpack_require__(427);
+	var _About = __webpack_require__(428);
 
 	var _About2 = _interopRequireDefault(_About);
 
-	var _EventContainer = __webpack_require__(428);
+	var _EventContainer = __webpack_require__(429);
 
 	var _EventContainer2 = _interopRequireDefault(_EventContainer);
 
@@ -56308,7 +56308,7 @@
 
 	var _AppToolbarNavMenu2 = _interopRequireDefault(_AppToolbarNavMenu);
 
-	var _AppToolbarLogin = __webpack_require__(426);
+	var _AppToolbarLogin = __webpack_require__(427);
 
 	var _AppToolbarLogin2 = _interopRequireDefault(_AppToolbarLogin);
 
@@ -56394,9 +56394,13 @@
 
 	var _wbSunny2 = _interopRequireDefault(_wbSunny);
 
+	var _assignmentTurnedIn = __webpack_require__(426);
+
+	var _assignmentTurnedIn2 = _interopRequireDefault(_assignmentTurnedIn);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var menuStructure = [{ key: 'about', label: 'About', route: '/about', icon: _wbSunny2.default }, { key: 'event', label: 'Events', route: '/events', icon: _eventNote2.default }];
+	var menuStructure = [{ key: 'about', label: 'About', route: '/about', icon: _wbSunny2.default }, { key: 'event', label: 'Events', route: '/events', icon: _eventNote2.default }, { key: 'myReservations', label: 'Meine Reservierungen', route: '/myReservations', icon: _assignmentTurnedIn2.default }];
 
 	var AppToolbarNavMenu = function AppToolbarNavMenu() {
 	    return _react2.default.createElement(
@@ -56507,6 +56511,47 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactAddonsPureRenderMixin = __webpack_require__(263);
+
+	var _reactAddonsPureRenderMixin2 = _interopRequireDefault(_reactAddonsPureRenderMixin);
+
+	var _svgIcon = __webpack_require__(284);
+
+	var _svgIcon2 = _interopRequireDefault(_svgIcon);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var ActionAssignmentTurnedIn = _react2.default.createClass({
+	  displayName: 'ActionAssignmentTurnedIn',
+
+	  mixins: [_reactAddonsPureRenderMixin2.default],
+
+	  render: function render() {
+	    return _react2.default.createElement(
+	      _svgIcon2.default,
+	      this.props,
+	      _react2.default.createElement('path', { d: 'M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm-2 14l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z' })
+	    );
+	  }
+	});
+
+	exports.default = ActionAssignmentTurnedIn;
+	module.exports = exports['default'];
+
+/***/ },
+/* 427 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 
@@ -56548,7 +56593,7 @@
 	exports.default = AppToolbarLogin;
 
 /***/ },
-/* 427 */
+/* 428 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56617,7 +56662,7 @@
 	exports.default = About;
 
 /***/ },
-/* 428 */
+/* 429 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

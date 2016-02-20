@@ -3,6 +3,7 @@ import { Router, Route, IndexRoute } from 'react-router';
 import App from './App';
 import About from './about/About';
 import EventContainer from './events/EventContainer';
+import MyReservationsContainer from './reservations/MyReservationsContainer';
 
 class AppRouter extends React.Component {
     render() {
@@ -12,6 +13,7 @@ class AppRouter extends React.Component {
                     <IndexRoute component={EventContainer} />
                     <Route path="/about" component={About} />
                     <Route path="/events" component={EventContainer} />
+                    <Route path="/myReservations" component={MyReservationsContainer} />
                 </Route>
             </Router>
         )
