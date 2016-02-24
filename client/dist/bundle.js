@@ -19687,6 +19687,10 @@
 
 	var _EventContainer2 = _interopRequireDefault(_EventContainer);
 
+	var _MyReservationsContainer = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./reservations/MyReservationsContainer\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
+	var _MyReservationsContainer2 = _interopRequireDefault(_MyReservationsContainer);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -19715,7 +19719,8 @@
 	                    { path: '/', component: _App2.default },
 	                    _react2.default.createElement(_reactRouter.IndexRoute, { component: _EventContainer2.default }),
 	                    _react2.default.createElement(_reactRouter.Route, { path: '/about', component: _About2.default }),
-	                    _react2.default.createElement(_reactRouter.Route, { path: '/events', component: _EventContainer2.default })
+	                    _react2.default.createElement(_reactRouter.Route, { path: '/events', component: _EventContainer2.default }),
+	                    _react2.default.createElement(_reactRouter.Route, { path: '/myReservations', component: _MyReservationsContainer2.default })
 	                )
 	            );
 	        }

@@ -7,7 +7,8 @@
     "precompile:dev": "cp ./client/src/*.html ./client/dist & cp ./client/src/*.ico ./client/dist",
     "compile:dev": "node_modules/.bin/webpack",
     "compile:prod": "node_modules/.bin/webpack -p",
-    "test": "node_modules/.bin/mocha --opts mocha.opts",
+    "test:client": "node_modules/.bin/mocha --opts mocha.client.opts",
+    "test:server": "node_modules/.bin/mocha --opts mocha.server.opts",
     "prestart": "npm run compile:dev",
     "start": "node server/server.js"
   },
@@ -28,11 +29,17 @@
   },
   "homepage": "https://github.com/appztreme/Jugendsommer#readme",
   "dependencies": {
+    "bluebird": "3.3.1",
     "body-parser": "1.15.0",
     "compression": "1.6.1",
+    "cookie-parser": "1.4.1",
     "express": "4.13.4",
+    "express-session": "1.13.0",
     "history": "1.17.0",
     "material-ui": "0.14.2",
+    "mongoose": "4.4.5",
+    "passport": "0.3.2",
+    "passport-local": "1.0.0",
     "react": "0.14.6",
     "react-dom": "0.14.6",
     "react-redux": "4.0.6",
@@ -48,6 +55,7 @@
     "expect": "1.13.4",
     "mocha": "2.3.4",
     "react-addons-test-utils": "0.14.6",
+    "supertest": "1.2.0",
     "webpack": "1.12.10"
   }
 }
