@@ -1,3 +1,0 @@
---recursive ./client/test/**/*.test.js
---reporter spec
---compilers js:babel-core/register
