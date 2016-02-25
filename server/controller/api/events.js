@@ -13,7 +13,8 @@ router.get('/', (req, res, next) => {
 
 router.get('/:eventId', (req, res, next) => {
     Event.findById(req.params.eventId)
-        .then(ev => res.json(ev))
+        .exec()
+        .then(ev => { console.log(ev); res.json(ev); })
         .catch(err => next(err));
 });
 

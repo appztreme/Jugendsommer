@@ -1,0 +1,64 @@
+conn = new Mongo();
+db = connect('jugendsommer_test');
+
+db.events.remove({});
+db.users.remove({});
+db.events.insert({
+    _id: ObjectId('111111111111111111111111'),
+    name: 'event1',
+    description: 'description event1',
+    startDate: new Date(2015,11,1),
+    endDate: new Date(2015,12,1),
+    visibleFrom: new Date(2015,10,1),
+    visibleTo: new Date(2016,10,1),
+    info: 'info for event1'
+});
+db.events.insert({
+    _id: ObjectId('111111111111111111111112'),
+    name: 'event2',
+    description: 'description event2',
+    startDate: new Date(2016,1,1),
+    endDate: new Date(2016,3,1),
+    visibleFrom: new Date(2015,12,1),
+    visibleTo: new Date(2016,10,1),
+    info: 'info for event2'
+});
+
+var eventsCnt = db.events.find().count();
+print("Events insertet: " + eventsCnt);
+
+db.users.insert({
+    _id: ObjectId('111111111111111111110001'),
+    firstName: 'userFirst',
+    lastName: 'userLast',
+    userTel: '1234/56789',
+    userName: 'user',
+    hashedPassword: '7422a98bd783f63a9e242adde9d20fff5d20ad7d', // user
+    salt: 'hUSxAgsgRwEpfWfS2m5SKsyjOJYWrg21qWnebUeqIhbndfVljWbvWLj68HgmL2uRO0i0c5/CYFYM8trIKPygcGEkLmNR6qxS3pINUW0iI05JkUkqbodB/WSSmsw+8HmEu67Vc+Hho6fpDwXsCId4N7i8cD+PvhJmRzyk5WvTw1k=',
+    roles: []
+});
+
+db.users.insert({
+    _id: ObjectId('111111111111111111110002'),
+    firstName: 'adminFirst',
+    lastName: 'adminLast',
+    userTel: '+98 7654 321',
+    userName: 'admin',
+    hashedPassword: 'ca6a0cca16b21299724f71ef2fb23321ea5f1d6f', // admin
+    salt: 'Kn6OJvtD2fDxN8LSqr2C/QGVvuvhfTOBJQY7osU94AHCQu/6Ux0s1DrFThYDq8d+wsscYglbW/2ggbsEX0nWE3AFSeIp/wkENBzcsR7jx1o5FS9GlEaaDL6TEuo+3Q1YKyTnBSUxgHqe4MORX5nRD9W9imQkwnO62gzZpFMLIOo=',
+    roles: ['admin']
+});
+
+db.users.insert({
+    _id: ObjectId('111111111111111111110003'),
+    firstName: 'fadminFirst',
+    lastName: 'fadminLast',
+    userTel: '111 222 3',
+    userName: 'fadmin',
+    hashedPassword: '4a2d5a39e8354192ad3563c2518be5b2c1c23976', // fadmin
+    salt: 'rVYhanL+gUoZjI3cR4mEfTUvzFoj7OFYFHtKonqQProuolDIPzzmFqgoo6xCkTvPj55bcTf9cJNM4oRcSG2+OpQ1lPl9Kuv0Ljfs5rIJ3ak/u2jL7lShF8QZYAYjEd5ewh7Dgb7JE1ax00pd5ol7vMqkTzsEbPjl9pCwiUd/LxQ=',
+    roles: ['admin', 'fadmin']
+});
+
+var userCnt = db.users.find().count();
+print("Users inserted: " + userCnt);
