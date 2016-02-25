@@ -8,6 +8,7 @@
     "compile:dev": "node_modules/.bin/webpack",
     "compile:prod": "node_modules/.bin/webpack -p",
     "test:client": "node_modules/.bin/mocha --opts mocha.client.opts",
+    "pretest:server": "export NODE_ENV=test",
     "test:server": "node_modules/.bin/mocha --opts mocha.server.opts",
     "prestart": "npm run compile:dev",
     "start": "node server/server.js"

@@ -1,26 +1,28 @@
 conn = new Mongo();
 db = connect('jugendsommer_test');
 
+var curYear = new Date().getFullYear();
+
 db.events.remove({});
 db.users.remove({});
 db.events.insert({
     _id: ObjectId('111111111111111111111111'),
     name: 'event1',
     description: 'description event1',
-    startDate: new Date(2015,11,1),
-    endDate: new Date(2015,12,1),
-    visibleFrom: new Date(2015,10,1),
-    visibleTo: new Date(2016,10,1),
+    startDate: new Date(curYear,11,1),
+    endDate: new Date(curYear,12,1),
+    visibleFrom: new Date(curYear,4,1),
+    visibleTo: new Date(curYear,10,1),
     info: 'info for event1'
 });
 db.events.insert({
     _id: ObjectId('111111111111111111111112'),
     name: 'event2',
     description: 'description event2',
-    startDate: new Date(2016,1,1),
-    endDate: new Date(2016,3,1),
-    visibleFrom: new Date(2015,12,1),
-    visibleTo: new Date(2016,10,1),
+    startDate: new Date(curYear,1,1),
+    endDate: new Date(curYear,3,1),
+    visibleFrom: new Date(curYear,1,1),
+    visibleTo: new Date(curYear,10,1),
     info: 'info for event2'
 });
 

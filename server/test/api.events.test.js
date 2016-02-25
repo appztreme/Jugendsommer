@@ -3,6 +3,8 @@ import request from 'supertest';
 import app from './../app';
 import * as uuid from './helper/uuid';
 
+const curYear = new Date().getFullYear();
+
 describe('Event', () => {
     describe('GET /events', () => {
         it('should return 200 response', done => {
@@ -31,21 +33,58 @@ describe('Event', () => {
                     expect(err).toNotExist;
                     expect(res).toExist;
                     expect(res.status).toEqual(200);
-                    console.log(res.body);
-                    //expect(res.body['name']).toBe(true);
-                    //expect(res.body.name).toEqual('event1');
-                    //expect(res.body.hasOwnProperty('description')).toBe(true);
-                    // expect(res.body.description).toEqual('description event1');
-                    // expect(res.body.hasOwnProperty('startDate')).toBe(true);
-                    // expect(new Date(res.body.startDate)).toEqual(new Date(2015,11,1));
-                    // expect(res.body).to.have.property('endDate');
-                    // expect(new Date(res.body.endDate)).to.equalDate(new Date(2015,12,1));
-                    // expect(res.body).to.have.property('visibleFrom');
-                    // expect(new Date(res.body.visibleFrom)).to.equalDate(new Date(2015,10,1));
-                    // expect(res.body).to.have.property('visibleTo');
-                    // expect(new Date(res.body.visibleTo)).to.equalDate(new Date(2016,10,1));
-                    // expect(res.body).to.have.property('info');
-                    // expect(res.body.info).to.equal('info for event1');
+                    expect(res.body.hasOwnProperty('name')).toBe(true);
+                    expect(res.body.name).toEqual('event1');
+                    expect(res.body.hasOwnProperty('description')).toBe(true);
+                    expect(res.body.description).toEqual('description event1');
+                    expect(res.body.hasOwnProperty('startDate')).toBe(true);
+                    expect(new Date(res.body.startDate)).toEqual(new Date(curYear,11,1));
+                    expect(res.body.hasOwnProperty('endDate')).toBe(true);
+                    expect(new Date(res.body.endDate)).toEqual(new Date(curYear,12,1));
+                    expect(res.body.hasOwnProperty('visibleFrom')).toBe(true);
+                    expect(new Date(res.body.visibleFrom)).toEqual(new Date(curYear,4,1));
+                    expect(res.body.hasOwnProperty('visibleTo')).toBe(true);
+                    expect(new Date(res.body.visibleTo)).toEqual(new Date(curYear,10,1));
+                    expect(res.body.hasOwnProperty('info')).toBe(true);
+                    expect(res.body.info).toEqual('info for event1');
+                    done();
+                });
+        });
+    });
+    describe('POST /events/', () => {
+        var cookies;
+        before('login', done => {
+            request(app).post('/api/login')
+                .field('username', 'user')
+                .field('password', 'user')
+                .end((err, res) => {
+                    expect(res.status).toEqual(200);
+                    //cookies = res.headers['set-cookie'].pop().split(';')[0];
+                    cookies = res.headers['set-cookie'];
+                    console.log(cookies);
+                    done();
+                });
+        });
+        it('should insert new entry in db', done => {
+            const newEvent = {
+                name:'eventPost',
+                description:'description eventPost',
+                startDate: new Date(curYear,4,3),
+                endDate: new Date(curYear,7,15),
+                visibleFrom: new Date(curYear,1,1),
+                visibleTo: new Date(curYear,11,1),
+                info: 'info for eventPost'
+            };
+            console.log(cookies);
+            request(app).post('/api/events')
+                .send(newEvent)
+                .set('Cookie', cookies)
+                .end((err, res) => {
+                    expect(err).toNotExist;
+                    expect(res).toExist;
+                    expect(res.status).toEqual(200);
+                    expect(res.body.hasOwnProperty('name')).toBe(true);
+                    expect(res.body.name).toEqual('eventPost');
                     done();
                 });
         });
