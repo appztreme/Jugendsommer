@@ -4,6 +4,7 @@ db = connect('jugendsommer_test');
 var curYear = new Date().getFullYear();
 
 db.events.remove({});
+db.activities.remove({});
 db.users.remove({});
 db.events.insert({
     _id: ObjectId('111111111111111111111111'),
@@ -38,6 +39,39 @@ db.events.insert({
 
 var eventsCnt = db.events.find().count();
 print("Events insertet: " + eventsCnt);
+
+db.activities.insert({
+    _id: ObjectId('111111111111111111111101'),
+    name: 'activity1',
+    description: 'description activity1',
+    startDate: new Date(curYear,11,1),
+    endDate: new Date(curYear,11,3),
+    maxParticipants: 5,
+    queueSize: 3
+});
+
+db.activities.insert({
+    _id: ObjectId('111111111111111111111102'),
+    name: 'activity2',
+    description: 'description activity2',
+    startDate: new Date(curYear,11,4),
+    endDate: new Date(curYear,11,7),
+    maxParticipants: 3,
+    queueSize: 1
+});
+
+db.activities.insert({
+    _id: ObjectId('111111111111111111111109'),
+    name: 'activity3',
+    description: 'description activity3',
+    startDate: new Date(curYear-1,11,20),
+    endDate: new Date(curYear-1,11,22),
+    maxParticipants: 3,
+    queueSize: 1
+});
+
+var activitiesCnt = db.activities.find().count();
+print("Activities insertet: " + activitiesCnt);
 
 db.users.insert({
     _id: ObjectId('111111111111111111110001'),
