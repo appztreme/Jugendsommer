@@ -3,7 +3,7 @@ import EventModel from './../../models/event';
 
 describe('Event Model', () => {
     let ev = null;
-    beforeEach(() => {
+    before(() => {
         ev = new EventModel({
             name: 'test name',
             description: 'test description',

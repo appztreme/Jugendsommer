@@ -3,7 +3,7 @@ import ActivityModel from './../../models/activity';
 
 describe('Activity Model', () => {
     let act = null;
-    beforeEach(() => {
+    before(() => {
         act = new ActivityModel({
             name: 'test name',
             description: 'test description',

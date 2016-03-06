@@ -1,5 +1,12 @@
 import Activity from './../models/activity';
 
+export function findActivities(req, res, next) {
+    if(req.query.eventId) // get all activities for a given event
+        findActivitiesByEventId(req, res, next);
+    if(req.query.activityId) // get all activity siblings for a given activity
+        findActivitySiblingsByEventId(req, res, next);
+};
+
 export function findActivitiesByEventId(req, res, next) {
     Activity.find()
         .where('eventId').equals(req.query.eventId)
@@ -13,8 +20,9 @@ export function findActivitySiblingsByEventId(req, res, next) {
     Activity.findById(req.query.activityId)
         .exec()
         .then(activity => {
+            res.json(activity);
             Activity.find()
-                .where('eventId').equal(activity.eventId)
+                .where('eventId').equals(activity.eventId)
                 .sort('startDate')
                 .exec()
                 .then(acts => res.json(acts))
@@ -24,7 +32,7 @@ export function findActivitySiblingsByEventId(req, res, next) {
 };
 
 export function findActivityById(req, res, next) {
-    Activity.findById(req.query.activityId)
+    Activity.findById(req.params.activityId)
         .exec()
         .then(activity => res.json(activity))
         .catch(err => next(err));
@@ -41,7 +49,7 @@ export function create(req, res, next) {
         queueSize: req.body.queueSize
     });
     activity.save()
-        .then(act => res.status(201).json(act);)
+        .then(act => res.status(201).json(act))
         .catch(err => next(err));
 };
 
@@ -59,7 +67,7 @@ export function update(req, res, next) {
             activity.queueSize = req.body.queueSize;
 
             activity.save()
-                .then(a => res.status(201).json(a);)
+                .then(a => res.status(201).json(a))
                 .catch(err => next(err));
         })
         .catch(err => next(err));

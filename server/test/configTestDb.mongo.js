@@ -46,6 +46,7 @@ db.activities.insert({
     description: 'description activity1',
     startDate: new Date(curYear,11,1),
     endDate: new Date(curYear,11,3),
+    eventId: ObjectId('111111111111111111111111'),
     maxParticipants: 5,
     queueSize: 3
 });
@@ -56,16 +57,40 @@ db.activities.insert({
     description: 'description activity2',
     startDate: new Date(curYear,11,4),
     endDate: new Date(curYear,11,7),
+    eventId: ObjectId('111111111111111111111111'),
+    maxParticipants: 3,
+    queueSize: 1
+});
+
+db.activities.insert({
+    _id: ObjectId('111111111111111111111107'),
+    name: 'activity3',
+    description: 'description activity3',
+    startDate: new Date(curYear,1,2),
+    endDate: new Date(curYear,1,6),
+    eventId: ObjectId('111111111111111111111112'),
+    maxParticipants: 3,
+    queueSize: 1
+});
+
+db.activities.insert({
+    _id: ObjectId('111111111111111111111108'),
+    name: 'activity4',
+    description: 'description activity4',
+    startDate: new Date(curYear,1,8),
+    endDate: new Date(curYear,1,12),
+    eventId: ObjectId('111111111111111111111112'),
     maxParticipants: 3,
     queueSize: 1
 });
 
 db.activities.insert({
     _id: ObjectId('111111111111111111111109'),
-    name: 'activity3',
-    description: 'description activity3',
+    name: 'activity5',
+    description: 'description activity5',
     startDate: new Date(curYear-1,11,20),
     endDate: new Date(curYear-1,11,22),
+    eventId: ObjectId('111111111111111111111112'),
     maxParticipants: 3,
     queueSize: 1
 });

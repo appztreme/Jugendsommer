@@ -7,7 +7,9 @@ import passport from 'passport';
 
 import loginRouter from './routes/loginRouter';
 import logoutRouter from './routes/logoutRouter';
+import userRouter from './routes/userRouter';
 import eventsRouter from './routes/eventsRouter';
+import activitiesRouter from './routes/activitiesRouter';
 
 const app = express();
 app.use(compression());
@@ -21,7 +23,9 @@ app.use(express.static(__dirname + './../client/dist/'));
 
 app.use('/api/login', loginRouter);
 app.use('/api/logout', logoutRouter);
+app.use('/api/users', userRouter);
 app.use('/api/events', eventsRouter);
+app.use('/api/activities', activitiesRouter);
 
 import passportConfig from './passport.config';
 
