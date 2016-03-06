@@ -8,7 +8,7 @@
     "compile:dev": "node_modules/.bin/webpack",
     "compile:prod": "node_modules/.bin/webpack -p",
     "test:client": "node_modules/.bin/mocha --opts mocha.client.opts",
-    "pretest:server": "export NODE_ENV=test",
+    "pretest:server": "mongo server/test/configTestDb.mongo.js",
     "test:server": "node_modules/.bin/mocha --opts mocha.server.opts",
     "prestart": "npm run compile:dev",
     "start": "node server/server.js"
@@ -55,8 +55,10 @@
     "babel-preset-react": "6.3.13",
     "expect": "1.13.4",
     "mocha": "2.3.4",
+    "proxyquire": "1.7.4",
     "react-addons-test-utils": "0.14.6",
     "supertest": "1.2.0",
+    "supertest-session": "2.0.1",
     "webpack": "1.12.10"
   }
 }

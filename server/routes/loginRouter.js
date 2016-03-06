@@ -1,4 +1,4 @@
-import auth from './../../util/authentication';
+import auth from './../util/authentication';
 import { Router } from 'express';
 let router = Router();
 

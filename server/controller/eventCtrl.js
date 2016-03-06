@@ -1,24 +1,25 @@
-import Event from './../../models/event';
-import auth from './../../util/authentication';
-import { Router } from 'express';
-let router = Router();
+import Event from './../models/event';
 
-router.get('/', (req, res, next) => {
+const curYear = new Date().getFullYear();
+const startCurYear = new Date(curYear, 1, 1);
+
+export function findEventsFromCurrenYear(req, res, next) {
     Event.find()
+        .where('startDate').gte(startCurYear)
         .sort({startDate: 1})
         .exec()
         .then(evs => res.json(evs))
         .catch(err => next(err));
-});
+};
 
-router.get('/:eventId', (req, res, next) => {
+export function findEventById(req, res, next) {
     Event.findById(req.params.eventId)
         .exec()
         .then(ev => res.json(ev))
         .catch(err => next(err));
-});
+};
 
-router.post('/', auth.requiresRole('admin'), (req, res, next) => {
+export function create(req, res, next) {
     let ev = new Event({
         name: req.body.name,
         description: req.body.description,
@@ -31,9 +32,9 @@ router.post('/', auth.requiresRole('admin'), (req, res, next) => {
     ev.save()
         .then(res.status(201).json(ev))
         .catch(err => next(err));
-});
+};
 
-router.put('/', auth.requiresRole('admin'), (req, res, next) => {
+export function update(req, res, next) {
     Event.findById(req.body._id)
         .then(ev => {
             if (!ev) {
@@ -48,10 +49,8 @@ router.put('/', auth.requiresRole('admin'), (req, res, next) => {
             ev.info = req.body.info;
 
             ev.save()
-                .then(eve => res.json(201, eve))
+                .then(eve => res.status(201).json(eve))
                 .catch(err => next(err));
         })
         .catch(err => next(err));
-});
-
-export default router;
+};

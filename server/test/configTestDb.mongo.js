@@ -25,6 +25,16 @@ db.events.insert({
     visibleTo: new Date(curYear,10,1),
     info: 'info for event2'
 });
+db.events.insert({
+    _id: ObjectId('111111111111111111111119'),
+    name: 'event9',
+    description: 'description event9',
+    startDate: new Date(curYear-1,1,1),
+    endDate: new Date(curYear-1,3,1),
+    visibleFrom: new Date(curYear-1,1,1),
+    visibleTo: new Date(curYear-1,10,1),
+    info: 'info for event9'
+});
 
 var eventsCnt = db.events.find().count();
 print("Events insertet: " + eventsCnt);
